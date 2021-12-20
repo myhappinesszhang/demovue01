@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <div id="app">
+       <button v-on:click="show= !show">点我</button>
+         <h1 v-show="show">看到我了！！</h1>
+         <h1 v-show="show">看到我了！！</h1>
+
+       <!--右击事件，不阻止默认事件发生-->
+          <button v-on:contextmenu="decrement">减少一个</button>
+       <!--右击事件，并阻止默认事件发生-->
+       <button v-on:contextmenu.prevent="num++">增加一个</button>
+            有{{num}}个人喜欢我
+   </div>
+   <br><br>
+  <div id="id1">
+      <button v-on:click="random=Math.random()">点我呀</button><span>{{random}}</span>
+      <h1 v-if="random >= 0.75">
+           大于=0.75
+      </h1>
+      <h1 v-else-if="random > 0.5">
+          大于0.5
+      </h1>
+      <h1 v-else-if="random > 0.25">
+          大于=0.25
+      </h1>
+      <h1 v-else>
+          小于最小数看到我啦？！else
+      </h1>
+      <h1>您的生日是：{{birth}} </h1>
+  </div>
+</body>
+<script src="node_modules/vue/dist/vue.js"></script>
+       <script>
+            var app=new Vue({
+                el:"#app",
+                data:{
+                    num:100,
+                     show:false
+                },
+                methods:{
+                    decrement:function () {
+                         this.num--;
+                    }
+
+                }
+            });
+           var id1=new Vue({
+                   el:"#id1",
+                  data:{
+                      birthday:1429032123201, // 毫秒值
+                   random:1
+                  },
+               computed:{
+                       birth(){//计算属性本质是一个方法，但是必须返回结果
+                           const d=new Date(this.birthday);
+                           return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate();
+                       }
+               }
+           })
+       </script>
+</html>

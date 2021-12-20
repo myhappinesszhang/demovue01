@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <div id="app">
+      <table border="1" cellspacing="0" cellpadding="0">
+           <tr>
+               <th>序号</th>
+               <th>姓名</th>
+               <th>性别</th>
+               <th>年龄</th>
+           </tr>
+          <tr  v-for="(user,index) in users" v-if="user.gender=='女'">
+              <td>{{index+1>9?index+1:'0'+(index+1)}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.gender}}</td>
+              <td>{{user.age}}</td>
+          </tr>
+      </table>
+         <ul>
+             <li v-for="(value, key, index) in user" >
+                   {{index+1}}-{{key}}-{{value}}
+             </li>
+             <li v-for="(item,index) in items" :key=index>
+
+             </li>
+         </ul>
+ </div>
+</body>
+
+<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+<script src="node_modules/vue/dist/vue.js"></script>
+
+<script type="text/javascript">
+     var app=new Vue({
+           el:"#app",
+           data:{
+               sex1: "男",
+               sex2:"女",
+                user:{
+                   name:'子航',age:21,sex:'男'//v-for除了可以迭代数组，也可以迭代对象。语法基本类似
+                },
+                users:[
+                    {name:'柳岩', gender:'女', age: 21},
+                    {name:'峰哥', gender:'男', age: 18},
+                    {name:'范冰冰', gender:'女', age: 24},
+                    {name:'刘亦菲', gender:'女', age: 18},
+                    {name:'古力娜扎', gender:'女', age: 25},
+                    {name:'古力娜扎', gender:'女', age: 25},
+                    {name:'大', gender:'男', age: 25},
+                    {name:'古力娜扎', gender:'女', age: 25},
+                    {name:'给', gender:'男', age: 25},
+                    {name:'古力娜扎', gender:'女', age: 25},
+                    {name:'古力娜扎', gender:'女', age: 25}
+                ]
+
+         }
+     });
+</script>
+</html>
